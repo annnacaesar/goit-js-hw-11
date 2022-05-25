@@ -12,19 +12,24 @@
     />
   </head>
   <header>
-    <form class="form-serch" action="">
-      <div class="form-search__container">
-        <input class="form-serch__input" type="text" name="search" placeholder="Search images...">
-        <button class="form-serch__btn" type="submit">
-          <svg class="form-serch__icon" width="25" height="25">
+    <form class="search-form" id="search-form">
+      <div class="search-form__container">
+        <input
+          class="search-form__input"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+        <button class="search-form__btn" type="submit">
+          <svg class="search-form__icon" width="25" height="25">
             <use href="./images/symbol-defs.svg#icon-search"></use>
           </svg>
-      </button>
+        </button>
       </div>
     </form>
   </header>
   <body>
-    
     <script src="./index.js"></script>
   </body>
 </html>

@@ -55,21 +55,21 @@ body {
   line-height: 1.5;
 }
 
-.form-serch{
+.search-form{
 
 	background-color: rgb(74, 87, 194);
 	padding: 20px;
 
 }
 
-.form-search__container{
+.search-form__container{
 		position: relative;
 	width: 320px;
 	display: flex;
 	margin: 0 auto;
 }
 
-.form-serch__input{
+.search-form__input{
 	
 	font: inherit;
   padding: 10px;
@@ -79,7 +79,7 @@ body {
   border-color: #7173e9;
 }
 
-.form-serch__btn{
+.search-form__btn{
 	position: absolute;
 	right: 3px;
 	top: 3px;
@@ -89,6 +89,6 @@ body {
 	background-color: #fff;
 }
 
-.form-serch__icon {
+.search-form__icon {
 	fill: #969696;
 }
