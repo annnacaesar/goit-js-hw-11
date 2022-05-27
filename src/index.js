@@ -41,7 +41,7 @@ function fetchImages () {
 	loadMoreBtn.disable();
 	apiService.fetchImage().then(images => {
 
-		if(apiService.page === 2)info(apiService.totalHits);
+		if(apiService.page === 2 && images.length !== 0)info(apiService.totalHits);
 
 		if (images.length === 0){
 			fail();

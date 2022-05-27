@@ -28,8 +28,5 @@ export default class ApiService {
   reset() {
     this.page = 1;
 		this.totalHits = null;
-
   }
 }
-
-// ?fields=webformatURL,largeImageURL,tags,likes,views,comments,downloads
