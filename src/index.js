@@ -15,7 +15,9 @@ const loadMoreBtn = new LoadMoreBtn({
   selector: '.load-more',
   hidden: true,
 });
-const gallery = new SimpleLightbox(".gallery__link");
+const gallery = new SimpleLightbox(".gallery__link", {
+	additionalHtml: ' Слава Україні!!!'
+});
 
 
 formRef.addEventListener('submit', onSearch);
