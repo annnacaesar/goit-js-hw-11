@@ -41,8 +41,6 @@ function fetchImages () {
 	loadMoreBtn.disable();
 	apiService.fetchImage().then(images => {
 
-		if(apiService.page === 2 && images.length !== 0)info(apiService.totalHits);
-
 		if (images.length === 0){
 			fail();
 		loadMoreBtn.hide()
@@ -74,10 +72,6 @@ function scroll () {
 		behavior: "smooth",
 	});
 }
-
-function info (totalHits) {
-	Notify.info(`Hooray! We found ${totalHits} images.`)
-};
 
 function fail () {
 	Notify.failure("Sorry, there are no images matching your search query. Please try again.")
