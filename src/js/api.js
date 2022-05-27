@@ -16,9 +16,7 @@ export default class ApiService {
 			return response.json();
 		}).then(({hits, totalHits}) => {
 			this.incrementPage();
-			console.log(this.totalHits);
 			this.totalHits = totalHits;
-			console.log(this.totalHits);
 			return hits;
 		})
 	}

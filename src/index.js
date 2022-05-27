@@ -1,22 +1,26 @@
 import './sass/main.scss';
+import "simplelightbox/dist/simple-lightbox.min.css";
 import { Notify } from 'notiflix';
 import ApiService from './js/api';
 import LoadMoreBtn from './js/load-more'
 import imageCard from './templates/image-card.hbs'
+import SimpleLightbox from 'simplelightbox';
+
 
 const formRef = document.querySelector('#search-form');
 const galleryRef = document.querySelector('.gallery');
-
-
 
 const apiService = new ApiService();
 const loadMoreBtn = new LoadMoreBtn({
   selector: '.load-more',
   hidden: true,
 });
+const gallery = new SimpleLightbox(".gallery__link");
+
 
 formRef.addEventListener('submit', onSearch);
 loadMoreBtn.refs.button.addEventListener('click', fetchImages);
+
 
 function onSearch (event) {
 	event.preventDefault();
@@ -31,26 +35,24 @@ function onSearch (event) {
 	apiService.reset();
 	clearImagesContainer();
 	fetchImages();
-
-
 }
 
 function fetchImages () {
 	loadMoreBtn.disable();
 	apiService.fetchImage().then(images => {
-		console.log(apiService.page);
-	
 
-		if(apiService.page === 2){
-			Notify.info(`Hooray! We found ${apiService.totalHits} images.`)
+		if(apiService.page === 2)info(apiService.totalHits);
+
+		if (images.length === 0){
+			fail();
+		loadMoreBtn.hide()
 		}
-
-		if(images.length === 0){
-			Notify.failure("Sorry, there are no images matching your search query. Please try again.")
-		} 
-
+		
 		appendArticlesMarkup(images);
+		gallery.refresh();
 		loadMoreBtn.enable();
+		scroll();
+
 	});
 }
 
@@ -62,3 +64,21 @@ function clearImagesContainer() {
   galleryRef.innerHTML = '';
 }
 
+function scroll () {
+	const { height: cardHeight } = document
+  .querySelector(".gallery")
+  .firstElementChild.getBoundingClientRect();
+
+	window.scrollBy({
+		top: cardHeight * 2,
+		behavior: "smooth",
+	});
+}
+
+function info (totalHits) {
+	Notify.info(`Hooray! We found ${totalHits} images.`)
+};
+
+function fail () {
+	Notify.failure("Sorry, there are no images matching your search query. Please try again.")
+}
