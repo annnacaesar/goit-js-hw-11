@@ -5,7 +5,6 @@ import ApiService from './js/api';
 import LoadMoreBtn from './js/load-more'
 import imageCard from './templates/image-card.hbs'
 import SimpleLightbox from 'simplelightbox';
-import './js/infinite-scroll'
 
 
 const formRef = document.querySelector('#search-form');
