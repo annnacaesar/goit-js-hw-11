@@ -6,7 +6,6 @@ export default class ApiService {
 		this.searchQuery = '';
 		this.page = 1;
 		this.per_page = 40;
-		this.totalHits = null;
 	}
 
 	async fetchImage() {
@@ -38,6 +37,5 @@ export default class ApiService {
 
   reset() {
     this.page = 1;
-		this.totalHits = null;
   }
 }
