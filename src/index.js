@@ -48,7 +48,7 @@ function fetchImages () {
 		loadMoreBtn.hide()
 		}
 		
-		appendArticlesMarkup(images);
+		appendImagesMarkup(images);
 		gallery.refresh();
 		loadMoreBtn.enable();
 		scroll();
@@ -56,7 +56,7 @@ function fetchImages () {
 	});
 }
 
-function appendArticlesMarkup(images) {
+function appendImagesMarkup(images) {
   galleryRef.insertAdjacentHTML('beforeend', imageCard(images));
 }
 
