@@ -11,24 +11,11 @@ export default class ApiService {
 	async fetchImage() {
 	const URL = `https://pixabay.com/api/?key=27616591-ea38afb15630e129e17ab0ac4&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${this.per_page}&page=${this.page}`;
 
-		// return fetch(URL).then(response => {
-		// 	if (!response.ok) {
-		// 		throw new Error('Error fetching data');
-		// 	}
-		// 	return response.json();
-		// }).then(({hits, totalHits}) => {
-		// 	this.incrementPage();
-		// 	this.totalHits = totalHits;
-		// 	return hits;
-		// })
-
-		const response = await axios.get(URL);
-		if(this.page === 1 && response.data.totalHits !== 0){
-			Notify.info(`Hooray! We found ${response.data.totalHits} images.`)
-		};
-		this.incrementPage();
-		
-		return response.data.hits;
+	const response = await axios.get(URL);
+	this.totalHits(this.page, response.data.totalHits);
+	this.incrementPage();
+	
+	return response.data.hits;
 	}
 	
 	incrementPage() {
@@ -38,4 +25,10 @@ export default class ApiService {
   reset() {
     this.page = 1;
   }
+
+	totalHits(page, hits) {
+		if(page === 1 && hits !== 0){
+			Notify.info(`Hooray! We found ${hits} images.`)
+		};
+	}
 }
